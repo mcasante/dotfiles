@@ -1,0 +1,47 @@
+theme "dracula"
+
+default_layout "compact"
+
+pane_frames true
+
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
+
+keybinds {
+    normal {
+        # Navegação entre panes (vim-like)
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+
+        # Criar panes
+        bind "Alt n" { NewPane; }
+        bind "Alt v" { NewPane "Right"; }
+        bind "Alt s" { NewPane "Down"; }
+
+        # Fechar pane
+        bind "Alt x" { CloseFocus; }
+
+        # Toggle fullscreen
+        bind "Alt f" { ToggleFocusFullscreen; }
+
+        # Tabs
+        bind "Alt t" { NewTab; }
+        bind "Alt w" { CloseTab; }
+
+        # Navegar tabs
+        bind "Alt ," { GoToPreviousTab; }
+        bind "Alt ." { GoToNextTab; }
+    }
+}
+
+plugins {
+    tab-bar { path "zellij:tab-bar"; }
+    status-bar { path "zellij:status-bar"; }
+    strider { path "zellij:strider"; }
+    compact-bar { path "zellij:compact-bar"; }
+}

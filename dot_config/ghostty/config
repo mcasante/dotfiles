@@ -1,11 +1,73 @@
-font-family = JetBrainsMono Nerd Font
-font-size = 14
+# =========================
+# SYSTEM
+# =========================
 
-window-padding-x = 10
-window-padding-y = 10
+shell-integration-features = ssh-terminfo,ssh-env
 
-background-opacity = 0.95
+# =========================
+# 🎨 APARÊNCIA
+# =========================
 
-theme = Dracula
+background-opacity = 0.9
+background-blur = true
 
-shell-integration = zsh
+# Padding (respiração visual)
+window-padding-x = 12
+window-padding-y = 12
+
+# =========================
+# 🌙 TEMA (dark moderno)
+# =========================
+
+# theme = Dracula
+theme = Ayu Mirage
+
+# Alternativas boas:
+# theme = Tokyo Night
+# theme = Catppuccin Mocha
+# theme = Gruvbox Dark
+
+# =========================
+# 🔤 FONTE
+# =========================
+
+font-family = JetBrains Mono
+# font-family = IBM Plex Mono
+# font-family = JetBrainsMono Nerd Font
+font-size = 10
+
+# fallback opcional
+# font-family-bold = JetBrainsMono Nerd Font Bold
+# font-family-italic = JetBrainsMono Nerd Font Italic
+
+# =========================
+# ✨ CURSOR
+# =========================
+
+cursor-style = block
+cursor-style-blink = true
+
+# =========================
+# 🖱️ SCROLL
+# =========================
+
+scrollback-limit = 10000
+
+# =========================
+# ⚡ PERFORMANCE / RENDER
+# =========================
+
+window-vsync = true
+
+# =========================
+# 🧩 UX
+# =========================
+
+confirm-close-surface = false
+
+# =========================
+# 🪟 WINDOW
+# =========================
+
+window-decoration = none
+window-theme = dark
