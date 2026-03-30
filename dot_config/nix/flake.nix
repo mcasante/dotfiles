@@ -24,7 +24,7 @@
 
         home-manager.darwinModules.home-manager
         {
-          home-manager.users.${builtins.getEnv "USER"} = {
+          home-manager.users.mcasante = {
             imports = [
               ./home/home.nix
               ./modules/shell.nix

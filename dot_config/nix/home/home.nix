@@ -5,7 +5,7 @@
 
   programs.git = {
     enable = true;
-    userName = "mcasante";
-    userEmail = "matheus.casante@gmail.com";
+    settings.user.name = "mcasante";
+    settings.user.email = "matheus.casante@gmail.com";
   };
 }
