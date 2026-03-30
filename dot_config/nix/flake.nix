@@ -11,13 +11,42 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }:
+  outputs = { nixpkgs, darwin, home-manager, ... }:
   let
-    system = "aarch64-darwin";
+    macUsername = "mcasante";
+    linuxUsernames = [ "mcasante" "ituser" ];
+
+    darwinSystem = "aarch64-darwin";
     hostname = "Matheuss-MacBook-Air";
+
+    homeModules = [
+      ./home/home.nix
+      ./modules/shell.nix
+      ./modules/node.nix
+      ./modules/terminal.nix
+    ];
+
+    mkHome = { system, username, homeDirectory ? null }:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+
+        modules = homeModules ++ [
+          ({ pkgs, ... }: {
+            home.username = username;
+            home.homeDirectory =
+              if homeDirectory != null
+              then homeDirectory
+              else if pkgs.stdenv.isDarwin
+              then "/Users/${username}"
+              else "/home/${username}";
+          })
+        ];
+      };
   in {
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
-      inherit system;
+      system = darwinSystem;
 
       modules = [
         ./darwin/configuration.nix
@@ -29,17 +58,42 @@
             useUserPackages = true;
             backupFileExtension = "backup";
           };
-          
-          home-manager.users.mcasante = {
-            imports = [
-              ./home/home.nix
-              ./modules/shell.nix
-              ./modules/node.nix
-              ./modules/terminal.nix
-            ];
-          };
+
+          home-manager.users.${macUsername}.imports = homeModules ++ [
+            {
+              home.username = macUsername;
+              home.homeDirectory = "/Users/${macUsername}";
+            }
+          ];
         }
       ];
     };
+
+    homeConfigurations =
+      builtins.listToAttrs (
+        builtins.concatMap
+          (username: [
+            {
+              name = "${username}@ubuntu";
+              value = mkHome { system = "x86_64-linux"; inherit username; };
+            }
+            {
+              name = "${username}@fedora";
+              value = mkHome { system = "x86_64-linux"; inherit username; };
+            }
+            {
+              name = "${username}@linux-aarch64";
+              value = mkHome { system = "aarch64-linux"; inherit username; };
+            }
+          ])
+          linuxUsernames
+      )
+      // {
+        "${macUsername}@${hostname}" = mkHome {
+          system = darwinSystem;
+          username = macUsername;
+          homeDirectory = "/Users/${macUsername}";
+        };
+      };
   };
 }
