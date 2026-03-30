@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    zellij
     fzf
+    # ghostty-bin
+    zellij
   ];
 }
