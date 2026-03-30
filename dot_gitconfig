@@ -1,0 +1,7 @@
+[user]
+	name = Matheus Casante
+	email = matheus.casante@gmail.com
+[pull]
+	rebase = false
+[core]
+	editor = code --wait
