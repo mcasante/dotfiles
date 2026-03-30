@@ -24,6 +24,12 @@
 
         home-manager.darwinModules.home-manager
         {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+          };
+          
           home-manager.users.mcasante = {
             imports = [
               ./home/home.nix
