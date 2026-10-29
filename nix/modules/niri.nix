@@ -16,7 +16,6 @@ lib.mkIf pkgs.stdenv.isLinux {
   xdg.configFile."dms/themes/everforest.json".source = link "config/dms/themes/everforest.json";
   xdg.configFile."dms/config.d/theme.json".source = link "config/dms/config.d/theme.json";
   xdg.configFile."dms/settings.json".source = link "config/dms/settings.json";
-  xdg.configFile."dms/plugins.lock.json".source = link "config/dms/plugins.lock.json";
   # ~/.local/share/wallpapers; pick one with Mod+Y or `dms ipc call wallpaper set <path>`
   xdg.dataFile."wallpapers".source = link "wallpapers";
 }

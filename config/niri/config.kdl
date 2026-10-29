@@ -117,6 +117,16 @@ animations {
     }
 }
 
+// Like Blur my Shell's "applications" setting: every window slightly translucent
+// (230/255) with the blurred wallpaper behind it. Mod+Shift+O toggles the
+// opacity for the focused window. Later rules override this one.
+window-rule {
+    opacity 0.9
+    background-effect {
+        blur true
+    }
+}
+
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
@@ -134,12 +144,15 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+    opacity 1.0
 }
 
-// Ghostty draws its own (translucent) background
+// Ghostty draws its own translucent background (background-opacity), so don't
+// stack the global opacity on top of it
 window-rule {
     match app-id="com.mitchellh.ghostty"
     draw-border-with-background false
+    opacity 1.0
 }
 
 recent-windows {
@@ -156,6 +169,7 @@ recent-windows {
 binds {
     // Mod+Space is the DMS launcher, so layout switching moves to Mod+Shift+Space
     Mod+Shift+Space { switch-layout "next"; }
+    Mod+Shift+O { toggle-window-rule-opacity; }
 }
 
 include optional=true "dms/colors.kdl"
