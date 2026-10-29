@@ -26,8 +26,8 @@ input {
 
 layout {
     background-color "transparent"
-    // PaperWM-style: keep the focused column centered, scrolling past the edges
-    center-focused-column "always"
+    // Center the focused column only when it doesn't fit next to the previous one
+    center-focused-column "on-overflow"
     always-center-single-column
 
     preset-column-widths {
