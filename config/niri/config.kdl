@@ -146,11 +146,11 @@ recent-windows {
     }
 }
 
-// Additions to the DMS stock binds in dms/binds.kdl
+// Additions to the DMS stock binds in dms/binds.kdl. That file is included
+// last, so a key bound there wins over the same key here; app launchers live there.
 binds {
     // Mod+Space is the DMS launcher, so layout switching moves to Mod+Shift+Space
     Mod+Shift+Space { switch-layout "next"; }
-    Mod+E { spawn "zed"; }
 }
 
 include optional=true "dms/colors.kdl"
