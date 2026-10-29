@@ -15,6 +15,7 @@
 
   programs.git = {
     enable = true;
+    signing.format = null;
     settings = {
       user.name = "Matheus Casante";
       user.email = "matheus.casante@gmail.com";

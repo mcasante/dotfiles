@@ -20,7 +20,8 @@ window-padding-y = 12
 # =========================
 
 # theme = Dracula
-theme = Ayu Mirage
+# Follows the system light/dark setting; keep in sync with config/zed/settings.json
+theme = light:Everforest Light Med,dark:Everforest Dark Med
 
 # Alternativas boas:
 # theme = Tokyo Night

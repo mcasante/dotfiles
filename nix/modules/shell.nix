@@ -15,6 +15,11 @@
 
     initContent = ''
       export PATH="$HOME/.local/bin:$PATH"
+
+      # herdr installs itself to ~/.local/bin, outside Nix
+      if command -v herdr >/dev/null; then
+        source <(herdr completion zsh)
+      fi
     '';
   };
 
