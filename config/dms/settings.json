@@ -668,5 +668,9 @@
       "row": 1
     }
   ],
-  "frameCloseGaps": true
+  "frameCloseGaps": true,
+  "touchpadAccelProfile": "default",
+  "touchpadDisableWhileTyping": true,
+  "touchpadTapAndDrag": true,
+  "touchpadDragLock": false
 }
