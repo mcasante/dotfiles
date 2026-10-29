@@ -19,11 +19,16 @@ input {
     touchpad {
         dwt
     }
+
+    // Mod+<n> for the workspace you're already on jumps back to the previous one
+    workspace-auto-back-and-forth
 }
 
 layout {
     background-color "transparent"
-    center-focused-column "never"
+    // PaperWM-style: keep the focused column centered, scrolling past the edges
+    center-focused-column "always"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.33333

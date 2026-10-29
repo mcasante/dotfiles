@@ -303,15 +303,15 @@
       "enabled": true
     }
   ],
-  "popupTransparency": 0.75,
-  "foregroundLayerTransparency": 0.8,
+  "popupTransparency": 0.7,
+  "foregroundLayerTransparency": 0.75,
   "blurLayerOutlineOpacity": 0,
   "blurBorderEnabled": true,
-  "blurBorderOpacity": 0.72,
+  "blurBorderOpacity": 0.35,
   "blurEnabled": true,
   "blurBorderSeeded": true,
   "radiusMode": "scale",
-  "blurStrength": 30,
+  "blurStrength": 40,
   "focusRingWidth": 1.5,
   "focusRingEnabled": true,
   "focusRingColor": "primary",
@@ -321,7 +321,7 @@
   "m3ElevationIntensity": 12,
   "m3ElevationOpacity": 30,
   "m3ElevationColorMode": "default",
-  "radiusStrength": 50,
+  "radiusStrength": 0,
   "fixedRadius": 15,
   "niriLayoutRadiusOverride": -1,
   "floatingWindowTitleBars": true,
@@ -339,10 +339,10 @@
   "textRenderType": 0,
   "textRenderQuality": 0,
   "syncComponentAnimationSpeeds": false,
-  "currentThemeCategory": "registry",
+  "currentThemeCategory": "custom",
   "matugenSpec": "dms",
   "matugenScheme": "scheme-expressive",
-  "matugenSeedColor": "#8a6257",
+  "matugenSeedColor": "",
   "connectedFrameBarStyleBackups": {},
   "frameEnabled": false,
   "widgetColorMode": "colorful",
@@ -672,5 +672,33 @@
   "touchpadAccelProfile": "default",
   "touchpadDisableWhileTyping": true,
   "touchpadTapAndDrag": true,
-  "touchpadDragLock": false
+  "touchpadDragLock": false,
+  "blurredWallpaperLayer": false,
+  "screenPreferences": {
+    "wallpaper": [
+      "all"
+    ]
+  },
+  "matugenSourceMode": "dominant",
+  "matugenContrast": 0.64,
+  "registryThemeVariants": {
+    "catppuccin": {
+      "dark": {
+        "flavor": "mocha",
+        "accent": "peach"
+      }
+    },
+    "astralJourney": {
+      "dark": {
+        "flavor": "blackhole",
+        "accent": "orange"
+      }
+    },
+    "joziCityNights": {
+      "dark": {
+        "flavor": "midnight",
+        "accent": "green"
+      }
+    }
+  }
 }

@@ -16,7 +16,7 @@ layout {
 }
 
 window-rule {
-    geometry-corner-radius 16
+    geometry-corner-radius 0
     clip-to-geometry true
     tiled-state true
     draw-border-with-background false
@@ -24,7 +24,7 @@ window-rule {
 
 blur {
     passes 3
-    offset 2.1
+    offset 2.9
 }
 
 layer-rule {
