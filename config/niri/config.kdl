@@ -5,7 +5,8 @@
 //
 // The dms/*.kdl files at the bottom are owned by DMS and rewritten from its
 // Settings UI: binds, gaps, radius, and colors from the DMS theme
-// (config/dms/themes/everforest.json). Put personal overrides in this file.
+// (config/dms/themes/everforest.json). They are tracked in config/niri/dms/ so
+// DMS edits show up in git. Put personal overrides in this file.
 
 input {
     keyboard {
@@ -159,3 +160,4 @@ include optional=true "dms/outputs.kdl"
 include optional=true "dms/cursor.kdl"
 include optional=true "dms/input.kdl"
 include optional=true "dms/windowrules.kdl"
+include optional=true "dms/wpblur.kdl"
