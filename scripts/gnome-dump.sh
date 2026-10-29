@@ -21,10 +21,10 @@ dump() {
 # workspace UUIDs and its saved copies of the stock keybindings are per-machine.
 dump /org/gnome/shell/ shell \
   '^\[(/|extensions/(blur-my-shell.*|dash-to-panel|extension-list|paperwm|paperwm/keybindings))\]$' \
-  '^(app-picker-layout|welcome-dialog-last-shown-version|last-selected-power-profile|restore-[a-z-]+|last-used-display-server|prefs-opened|intellihide-persisted-state|extension-version|settings-version)='
+  '^(app-picker-layout|command-history|welcome-dialog-last-shown-version|last-selected-power-profile|restore-[a-z-]+|last-used-display-server|prefs-opened|intellihide-persisted-state|extension-version|settings-version)='
 
 dump /org/gnome/desktop/ desktop \
   '^\[(interface|wm/preferences|peripherals/keyboard|peripherals/touchpad|input-sources)\]$' \
-  '^(current|mru-sources)='
+  '^(current|mru-sources|numlock-state)='
 
 dump /org/gnome/mutter/ mutter '^\[/\]$'
