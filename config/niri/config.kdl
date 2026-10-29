@@ -1,0 +1,161 @@
+// niri configuration. Reference: https://niri-wm.github.io/niri/Configuration%3A-Introduction.html
+// Based on what `dms setup headless --compositor niri` generates. DMS starts as a
+// systemd user service (systemctl --user add-wants niri.service dms), so there is
+// no spawn-at-startup for it here.
+//
+// The dms/*.kdl files at the bottom are owned by DMS and rewritten from its
+// Settings UI: binds, gaps, radius, and colors from the DMS theme
+// (config/dms/themes/everforest.json). Put personal overrides in this file.
+
+input {
+    keyboard {
+        xkb {
+            layout "br,us"
+        }
+    }
+
+    // Tap, natural scrolling and accel come from dms/input.kdl
+    touchpad {
+        dwt
+    }
+}
+
+layout {
+    background-color "transparent"
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+
+    border {
+        off
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+}
+
+// Same as GNOME: no hot corner. Overview stays on Mod+O / Mod+Tab and the
+// four-finger swipe up; three fingers swipe between workspaces and columns.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+config-notification {
+    disable-failed
+}
+
+// Lets the DMS wallpaper show behind workspaces in the overview
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    QT_QPA_PLATFORM "wayland;xcb"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+    TERMINAL "ghostty"
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Calculator$"#
+    match app-id=r#"^xdg-desktop-portal"#
+    match app-id=r#"^dev\.duxlabs\.shell$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Ghostty draws its own (translucent) background
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+}
+
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+// Additions to the DMS stock binds in dms/binds.kdl
+binds {
+    // Mod+Space is the DMS launcher, so layout switching moves to Mod+Shift+Space
+    Mod+Shift+Space { switch-layout "next"; }
+    Mod+E { spawn "zed"; }
+}
+
+include optional=true "dms/colors.kdl"
+include optional=true "dms/layout.kdl"
+include optional=true "dms/alttab.kdl"
+include optional=true "dms/binds.kdl"
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/cursor.kdl"
+include optional=true "dms/input.kdl"
+include optional=true "dms/windowrules.kdl"

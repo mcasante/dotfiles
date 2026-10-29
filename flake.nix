@@ -26,6 +26,7 @@
       ./nix/modules/terminal.nix
       ./nix/modules/gnome.nix
       ./nix/modules/editor.nix
+      ./nix/modules/niri.nix
     ];
 
     mkHome = { system, username, homeDirectory ? null }:
