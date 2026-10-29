@@ -13,19 +13,15 @@
       gs = "git status";
     };
 
-    initExtra = ''
+    initContent = ''
       export PATH="$HOME/.local/bin:$PATH"
-      
-      # bun
-      export BUN_INSTALL="$HOME/.bun"
-      export PATH="$BUN_INSTALL/bin:$PATH"
     '';
   };
 
   programs.starship.enable = true;
+  xdg.configFile."starship.toml".source = ../../config/starship.toml;
 
   home.packages = with pkgs; [
-    zellij
     eza
     bat
     ripgrep

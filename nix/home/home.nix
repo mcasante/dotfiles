@@ -15,7 +15,11 @@
 
   programs.git = {
     enable = true;
-    settings.user.name = "mcasante";
-    settings.user.email = "matheus.casante@gmail.com";
+    settings = {
+      user.name = "Matheus Casante";
+      user.email = "matheus.casante@gmail.com";
+      pull.rebase = false;
+      core.editor = "zed --wait";
+    };
   };
 }

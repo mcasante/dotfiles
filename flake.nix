@@ -20,10 +20,11 @@
     hostname = "Matheuss-MacBook-Air";
 
     homeModules = [
-      ./home/home.nix
-      ./modules/shell.nix
-      ./modules/node.nix
-      ./modules/terminal.nix
+      ./nix/home/home.nix
+      ./nix/modules/shell.nix
+      ./nix/modules/node.nix
+      ./nix/modules/terminal.nix
+      ./nix/modules/gnome.nix
     ];
 
     mkHome = { system, username, homeDirectory ? null }:
@@ -49,7 +50,7 @@
       system = darwinSystem;
 
       modules = [
-        ./darwin/configuration.nix
+        ./nix/darwin/configuration.nix
 
         home-manager.darwinModules.home-manager
         {
