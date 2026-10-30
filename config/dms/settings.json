@@ -700,5 +700,12 @@
         "accent": "green"
       }
     }
-  }
+  },
+  "notepadUseMonospace": true,
+  "notepadShowLineNumbers": true,
+  "notepadAutoSave": false,
+  "notepadDefaultMode": "slideout",
+  "notepadSlideoutSide": "right",
+  "notepadUseCompositorGap": false,
+  "notepadEdgeGap": 0
 }

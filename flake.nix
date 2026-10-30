@@ -9,9 +9,13 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Apple Music client (Linux). Not following our nixpkgs: it pins a
+    # Widevine-capable Electron build.
+    sidra.url = "github:wimpysworld/sidra";
   };
 
-  outputs = { nixpkgs, darwin, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, darwin, home-manager, ... }:
   let
     macUsername = "mcasante";
     linuxUsernames = [ "mcasante" "ituser" ];
@@ -27,6 +31,7 @@
       ./nix/modules/gnome.nix
       ./nix/modules/editor.nix
       ./nix/modules/niri.nix
+      ./nix/modules/apps.nix
     ];
 
     mkHome = { system, username, homeDirectory ? null }:
@@ -34,6 +39,8 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+
+        extraSpecialArgs = { inherit inputs; };
 
         modules = homeModules ++ [
           ({ pkgs, ... }: {
@@ -60,6 +67,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
           };
 
           home-manager.users.${macUsername}.imports = homeModules ++ [
